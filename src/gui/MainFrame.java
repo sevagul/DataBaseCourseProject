@@ -64,7 +64,7 @@ public class MainFrame extends JFrame {
                     add(foodstuffAddingPanel);
                 if(( (JButton)e.getSource() ).getText().equals("На домашню сторінку"))
                     add(helloPanel);
-                if(( (JButton)e.getSource() ).getText().equals("Додати своє блюдо"))
+                if(( (JButton)e.getSource() ).getText().equals("Додати свою страву"))
                     add(dishAddingPanel);
                 if(( (JButton)e.getSource() ).getText().equals("Створити свято"))
                     add(holidayAddingPanel);
@@ -88,7 +88,7 @@ public class MainFrame extends JFrame {
             public void dishAdded(String dish){
                 if(holidayAddingPanel.getState() == 1){
                     holidayAddingPanel.getTextPanel().setText("");
-                    holidayAddingPanel.getTextPanel().appendText("Додані блюда:\n");
+                    holidayAddingPanel.getTextPanel().appendText("Додані страви:\n");
                     holidayAddingPanel.setState(0);
                 }
                 holidayAddingPanel.getTextPanel().appendText(dish + "\n");

@@ -12,7 +12,7 @@ public class HelloPanel extends JPanel {
     HelloPanel(){
         holidayAddingPanelButton = new JButton("Створити свято");
         foodStuffAddingPanelButton = new JButton("Додати свій продукт");
-        dishAddingPanelButton = new JButton("Додати своє блюдо");
+        dishAddingPanelButton = new JButton("Додати свою страву");
 
         setLayout(new GridBagLayout());
 

@@ -25,7 +25,7 @@ public class HolidayAddingPanel extends JPanel {
         formPanel = new FormPanel(controller);
         textPanel = new TextPanel();
         buttonPanel = new JPanel();
-        dishAddingButton = new JButton("Додати своє блюдо");
+        dishAddingButton = new JButton("Додати свою страву");
         foodStuffAddingButton = new JButton("Додати свій продукт");
         homeButton = new JButton("На домашню сторінку");
         //////////////setting up menu bar//////////////////////////////////////////////////

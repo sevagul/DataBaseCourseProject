@@ -45,7 +45,7 @@ public class MainController {
     }
     public String getInfo(){
         String answer;
-        answer = "  Свято: " + holiday.getName() + "\n  Блюда: \n";
+        answer = "  Свято: " + holiday.getName() + "\n  Страви: \n";
         for(Dish dish: holiday.getDishes()){
             answer = answer.concat(dish.getName() + " \n");
         }

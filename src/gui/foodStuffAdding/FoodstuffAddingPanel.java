@@ -29,7 +29,7 @@ public class FoodstuffAddingPanel extends JPanel {
         textPanel = new TextPanel();
         textPanel.setText(foodController.getInfo());
         homeButton = new JButton("На домашню сторінку");
-        dishAddingButton = new JButton("Додати своє блюдо");
+        dishAddingButton = new JButton("Додати свою страву");
         holidayAddingButton = new JButton("Створити свято");
         buttonPanel = new JPanel();
 

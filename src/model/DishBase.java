@@ -34,7 +34,7 @@ public class DishBase extends ArrayList<Dish> {
 
     public String getReadableInfo(){
         String answer = "";
-        answer += (("Блюда:") + "\n");
+        answer += (("Страви:") + "\n");
         for(Dish dish: this){
             answer +=((dish.getId()) + ". ");
             answer +=((dish.getName()) + " ");

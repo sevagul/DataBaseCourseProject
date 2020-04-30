@@ -32,7 +32,7 @@ public class FormPanel extends JPanel {
         nameField.setText("Новий Рік");
         peopleAmountBox = new JComboBox();
         creatingButton = new JButton("Створити свято");
-        addingDishButton = new JButton("Додати блюдо...");
+        addingDishButton = new JButton("Дадати страву...");
         dishMenu = new DishMenu(controller);
         dishes = new ArrayList<String>();
 

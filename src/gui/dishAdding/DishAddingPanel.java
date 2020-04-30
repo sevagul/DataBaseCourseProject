@@ -64,7 +64,7 @@ public class DishAddingPanel extends JPanel {
                 @Override
                 public void dishAdded(FormEvent event) {
                     if((weights.size() != ingredients.size()) || (ingredients.size() == 0)){
-                        formPanel.setError("Некоректне блюдо");
+                        formPanel.setError("Некоректна страва");
                         return;
                     }
                     if(event.getDishName().equals("")){
@@ -72,7 +72,7 @@ public class DishAddingPanel extends JPanel {
                         return;
                     }
                     if(dishController.getDishBase().contains(event.getDishName())){
-                        formPanel.setError("Блюдо з такою назвою вже є");
+                        formPanel.setError("Страва з такою назвою вже є");
                         return;
                     }
                     dishController.getDishBase().addDish(event.getDishName(), new Recipe(dishController.getFoodBase(), ingredients, weights, event.getPeopleAmount()), event.getDishType());

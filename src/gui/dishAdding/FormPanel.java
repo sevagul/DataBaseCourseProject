@@ -24,7 +24,7 @@ public class FormPanel extends JPanel {
         Dimension dim = getPreferredSize();
         dim.width = 250;
         setPreferredSize(dim);
-        setBorder(BorderFactory.createTitledBorder("Дадавання власного блюда"));
+        setBorder(BorderFactory.createTitledBorder("Додавання власної страви"));
 
         JTable table = new JTable(2, 16);
         JScrollPane scrollpane = new JScrollPane(table);
@@ -38,7 +38,7 @@ public class FormPanel extends JPanel {
         table.setShowVerticalLines(true);
         ////setting up components/////////////
         nameField = new JTextField(10);
-        creatingButton = new JButton("Додати Блюдо");
+        creatingButton = new JButton("Додати Страву");
         errorLabel = new JLabel("()");
         ingredientField = new JTextField(5);
         amountField = new JTextField(5);
@@ -97,8 +97,8 @@ public class FormPanel extends JPanel {
 
         //// adding components ///////
 
-        addComponents(new JLabel("Назва Блюда: "), nameField, gc, false);
-        addComponents(new JLabel("Тип блюда: "), dishTypeBox, gc, false);
+        addComponents(new JLabel("Назва Страви: "), nameField, gc, false);
+        addComponents(new JLabel("Тип страви: "), dishTypeBox, gc, false);
         addComponents(new JLabel("Кількість людей:"), peopleAmountField, gc, false);
         addComponent(creatingButton, gc, false);
         addComponents(ingredientField, amountField, gc, false);
