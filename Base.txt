@@ -1,0 +1,118 @@
+Dishes:
+3
+Крабовий салат
+0
+Recipe:
+28
+67
+29
+10
+19
+1
+10
+67
+2
+34
+Recipe end
+4
+Вінігрет
+0
+Recipe:
+5
+40
+3
+40
+30
+40
+0
+40
+6
+40
+31
+10
+Recipe end
+5
+Олів'є
+0
+Recipe:
+1
+50
+5
+50
+4
+1
+3
+50
+0
+25
+9
+25
+6
+50
+2
+38
+Recipe end
+6
+Шампанське
+3
+Recipe:
+27
+500
+Recipe end
+7
+Вино
+3
+Recipe:
+15
+500
+Recipe end
+8
+Картопля
+2
+Recipe:
+3
+200
+26
+50
+9
+50
+Recipe end
+12
+Хліб
+4
+Recipe:
+32
+250
+Recipe end
+13
+Живчик
+3
+Recipe:
+13
+200
+Recipe end
+14
+Глінтвейн
+3
+Recipe:
+33
+1
+15
+9
+34
+1
+Recipe end
+15
+Хумус
+4
+Recipe:
+14
+150
+Recipe end
+16
+Хліб1
+2
+Recipe:
+32
+100
+Recipe end
