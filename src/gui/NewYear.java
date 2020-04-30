@@ -1,24 +1,18 @@
 package gui;
 
-import model.FoodBase;
 import model.FoodStuff;
-import new_model.FoodBase1;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Enumeration;
+import new_model.FoodControl;
+import new_model.dataBaseRestaurant;
 
 public class NewYear {
+    private static String dataBase = "jdbc:mysql://localhost:8889/restaurant";
     public static void main(String[] args) {
         //new MainFrame();
-        FoodBase1 foodBase1 = new FoodBase1("jdbc:mysql://localhost:8889/foodBase");
-        foodBase1.connectToDataBase();
-        System.out.println(foodBase1.checkIfPresent("Норі"));
-        //foodBase1.putStuff(new FoodStuff("Норі", 1000, 0));
+        dataBaseRestaurant dataBaseRestaurant = new dataBaseRestaurant(dataBase);
+        FoodControl foodControl = dataBaseRestaurant.getFoodControl();
+        System.out.println(foodControl.getFoodStuff(32));
+        System.out.println(foodControl.getFoodStuff("Хліб"));
+        foodControl.putStuff(new FoodStuff("Норі", 130, 0));
+        foodControl.dropProduct("Норі");
     }
 }

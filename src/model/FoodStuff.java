@@ -40,4 +40,13 @@ public class FoodStuff {
         answer = id + "\t" + name + "\t" + price + "\n";
         return answer;
     }
+
+    @Override
+    public String toString() {
+        return "FoodStuff{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", id=" + id +
+                '}';
+    }
 }
