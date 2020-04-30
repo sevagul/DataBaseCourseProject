@@ -6,73 +6,29 @@ import model.FoodStuff;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-public class FoodControl {
+public class FoodControl extends ControlTable{
     private Connection con;
 
     public FoodControl(Connection con) {
-        this.con = con;
+        super( "products", con);
     }
 
     public void putStuff(FoodStuff stuff) {
-        String id = String.valueOf(stuff.getId());
-        String name = stuff.getName();
-        String price = String.valueOf(stuff.getPrice());
-
-        try{
-            Statement stm = con.createStatement();
-            String query = "INSERT INTO products VALUES(NULL, '" + name + "', '" + price + "')";
-            System.out.println(query);
-            if (!checkIfPresent(name)) { stm.executeUpdate(query); }
-            else{
-                throw new Exception("Product is already present, can't add it");
-            }
-            stm.close();
-
-        } catch (Exception ex){
-            ex.printStackTrace();
-        }
-    }
-
-    public boolean checkIfPresent(String name){
-        boolean answ=false;
-        try{
-            Statement stm = con.createStatement();
-            String query = "SELECT * FROM products WHERE name='" + name + "'";
-            ResultSet res = stm.executeQuery(query);
-            if(res.next()){ answ = true; }
-            stm.close();
-
-        } catch (Exception ex){
-            ex.printStackTrace();
-        }
-        return answ;
-    }
-
-    public void dropProduct(String name){
-        try{
-            Statement stm = con.createStatement();
-            String query = "DELETE FROM products WHERE name='" + name + "'";
-            stm.executeUpdate(query);
-            stm.close();
-
-        } catch (Exception ex){
-            ex.printStackTrace();
-        }
+        ArrayList<String> values = stuff.getValues();
+        putRecord(values);
     }
 
     public FoodStuff getFoodStuff(int id){
         try{
-            String id_str = String.valueOf(id);
-            Statement stm = con.createStatement();
-            String query = "SELECT * FROM products WHERE id='" + id_str + "'";
-            ResultSet res = stm.executeQuery(query);
-            if(!res.next()){
-                throw new Exception("Failed finding a FoodStuff with id " + id_str + " in the table products");
+            ResultSet res = getItem(id);
+            if(res == null){
+                throw new Exception("Failed get Foodstuff with id" + String.valueOf(id));
             }
             String name = res.getString("name");
             int price = res.getInt("price");
-            stm.close();
             return new FoodStuff(name, price, id);
 
         } catch (Exception ex){
@@ -82,15 +38,12 @@ public class FoodControl {
     }
     public FoodStuff getFoodStuff(String name){
         try{
-            Statement stm = con.createStatement();
-            String query = "SELECT * FROM products WHERE name='" + name + "'";
-            ResultSet res = stm.executeQuery(query);
-            if(!res.next()){
-                throw new Exception("Failed finding a FoodStuff with name " + name + " in the table products");
+            ResultSet res = getItem(name);
+            if(res == null){
+                throw new Exception("Failed get Foodstuff with name" + name);
             }
             int id = res.getInt("id");
             int price = res.getInt("price");
-            stm.close();
             return new FoodStuff(name, price, id);
 
         } catch (Exception ex){

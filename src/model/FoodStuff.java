@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class FoodStuff {
     String name;
     int price; //per unit(kg, litre, bottle(vine), units(egg))
@@ -9,6 +11,11 @@ public class FoodStuff {
         this.name = name;
         this.price = price;
         this.id = id;
+    }
+    public FoodStuff(String name, int price) {
+        this.name = name;
+        this.price = price;
+        this.id = -1;
     }
 
     public String getName() {
@@ -48,5 +55,18 @@ public class FoodStuff {
                 ", price=" + price +
                 ", id=" + id +
                 '}';
+    }
+    public ArrayList<String> getValues(boolean withId){
+        ArrayList<String> answ = new ArrayList<String>();
+        if (withId) answ.add(String.valueOf(id));
+        answ.add(name);
+        answ.add(String.valueOf(price));
+        return answ;
+    }
+    public ArrayList<String> getValues(){
+        ArrayList<String> answ = new ArrayList<String>();
+        answ.add(name);
+        answ.add(String.valueOf(price));
+        return answ;
     }
 }

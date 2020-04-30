@@ -56,6 +56,7 @@ public class ControlTable {
         try{
             Statement stm = con.createStatement();
             String query = "DELETE FROM " + tableName + " WHERE name='" + name + "'";
+            System.out.println(query);
             stm.executeUpdate(query);
             stm.close();
 
