@@ -1,4 +1,4 @@
-package new_model;
+package new_model.dbClasses;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -7,18 +7,23 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SelectResult extends ArrayList<HashMap<String, String>> {
-    public SelectResult(int initialCapacity) { super(initialCapacity); }
+public class SelectResult extends ArrayList<KeyVals> {
+    public SelectResult(int initialCapacity) {
+        super(initialCapacity);
+    }
 
-    public SelectResult() { }
+    public SelectResult() {
+    }
 
-    public SelectResult(@NotNull Collection<? extends HashMap<String, String>> c) { super(c); }
+    public SelectResult(@NotNull Collection<? extends KeyVals> c) {
+        super(c);
+    }
 
     @Override
     public String toString() {
         String answ = "";
-        for(HashMap<String, String> hm: this){
-            for (Map.Entry mapElement : hm.entrySet()) {
+        for(KeyVals kv: this){
+            for (Map.Entry mapElement : kv.entrySet()) {
                 String key = (String) mapElement.getKey();
                 String value = (String) mapElement.getValue();
                 answ += key + " : " + value + ", ";

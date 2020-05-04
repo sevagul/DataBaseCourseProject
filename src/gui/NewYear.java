@@ -1,22 +1,19 @@
 package gui;
 
-import Controller.FoodController;
-import Controller.FoodControllerTxt;
-import model.FoodBase;
-import model.Product;
-import new_model.DbController;
-import new_model.FoodControllerSql;
-import new_model.dataBaseRestaurant;
-
-import java.sql.Connection;
+import new_model.controllers.DbController;
+import new_model.dbClasses.KeyVals;
 
 public class NewYear {
     private static String dataBase = "jdbc:mysql://localhost:8889/restaurant?useSSL=false";
+    private static String products = "Products";
     public static void main(String[] args) {
         //new MainFrame();
         DbController dbController = new DbController(dataBase);
-        //System.out.println(dbController.select("SELECT * from products limit 5"));
-        dbController.update(dbController.connectToDataBase(), "SELECT * from products");
-        System.out.println(dbController.select("SELECT * from products"));
+        dbController.insertIntoTable(products, new String[] {"NULL", "Укроп", "35"});
+        dbController.updateTable(products, new KeyVals("price", "40"), new KeyVals("name", "Укроп Зелений"));
+        dbController.deleteFromTable(products, "name='Укроп'");
+
+        System.out.println(dbController.selectFromTable("Products", "COUNT(name)", "name='Укроп Зелений'"));
+
     }
 }
