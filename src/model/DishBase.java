@@ -39,8 +39,8 @@ public class DishBase extends ArrayList<Dish> {
             answer +=((dish.getId()) + ". ");
             answer +=((dish.getName()) + " ");
             answer += ("Рецепт:\n") ;
-            for(FoodStuff foodStuff: dish.keySet()){
-                answer +=(foodStuff.getName() + " + ");
+            for(Product product: dish.keySet()){
+                answer +=(product.getName() + " + ");
             }
             answer += "Кінець" + "\n";
         }
@@ -75,9 +75,9 @@ public class DishBase extends ArrayList<Dish> {
                 pw.println(dish.getName());
                 pw.println(dish.getType());
                 pw.println("Recipe:");
-                for(FoodStuff foodStuff: dish.keySet()){
-                    pw.println(foodStuff.getId());
-                    pw.println(dish.get(foodStuff));
+                for(Product product: dish.keySet()){
+                    pw.println(product.getId());
+                    pw.println(dish.get(product));
                 }
                 pw.println("Recipe end");
             }

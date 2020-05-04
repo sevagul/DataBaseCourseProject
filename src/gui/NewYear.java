@@ -1,7 +1,10 @@
 package gui;
 
-import model.FoodStuff;
-import new_model.FoodControl;
+import Controller.FoodController;
+import Controller.FoodControllerTxt;
+import model.FoodBase;
+import model.Product;
+import new_model.FoodControllerSql;
 import new_model.dataBaseRestaurant;
 
 public class NewYear {
@@ -9,10 +12,12 @@ public class NewYear {
     public static void main(String[] args) {
         //new MainFrame();
         dataBaseRestaurant dataBaseRestaurant = new dataBaseRestaurant(dataBase);
-        FoodControl foodControl = dataBaseRestaurant.getFoodControl();
-        System.out.println(foodControl.getFoodStuff(32));
-        System.out.println(foodControl.getFoodStuff("Хліб"));
-        foodControl.putStuff(new FoodStuff("Норі", 130, 0));
+        FoodControllerSql foodControl = dataBaseRestaurant.getFoodController();
+        System.out.println(foodControl.getProduct(32));
+        System.out.println(foodControl.getProduct("Хліб"));
+        foodControl.putProduct(new Product("Норі", 130, 0));
         foodControl.dropItem("Норі");
+        System.out.println(foodControl.getInfo());
+
     }
 }

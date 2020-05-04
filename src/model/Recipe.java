@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Recipe extends HashMap<FoodStuff, Integer> {
+public class Recipe extends HashMap<Product, Integer> {
     private FoodBase foodBase;
 
     public Recipe(){
@@ -19,13 +19,13 @@ public class Recipe extends HashMap<FoodStuff, Integer> {
         if(ingredients.length != weights.length)
             return;
         for(int i = 0; i < ingredients.length; i++){
-            FoodStuff stuff = foodBase.getById(ingredients[i]);
-            if(stuff == null || weights[i] < 0)
+            Product product = foodBase.getById(ingredients[i]);
+            if(product == null || weights[i] < 0)
                 return;
         }
         for(int i = 0; i < ingredients.length; i++){
-            FoodStuff stuff = foodBase.getById(ingredients[i]);
-            put(stuff, (int) Math.ceil(weights[i]/(double)(peopleAmount)));
+            Product product = foodBase.getById(ingredients[i]);
+            put(product, (int) Math.ceil(weights[i]/(double)(peopleAmount)));
         }
     }
 
@@ -34,13 +34,13 @@ public class Recipe extends HashMap<FoodStuff, Integer> {
         if(ingredients.size() != weights.size())
             return;
         for(int i = 0; i < ingredients.size(); i++){
-            FoodStuff stuff = foodBase.getById(ingredients.get(i));
-            if(stuff == null || weights.get(i) < 0)
+            Product product = foodBase.getById(ingredients.get(i));
+            if(product == null || weights.get(i) < 0)
                 return;
         }
         for(int i = 0; i < ingredients.size(); i++){
-            FoodStuff stuff = foodBase.getById(ingredients.get(i));
-            put(stuff, (int) Math.ceil(weights.get(i)/(double)(peopleAmount)));
+            Product product = foodBase.getById(ingredients.get(i));
+            put(product, (int) Math.ceil(weights.get(i)/(double)(peopleAmount)));
         }
     }
 
@@ -52,7 +52,7 @@ public class Recipe extends HashMap<FoodStuff, Integer> {
         }
         return true;
     }
-    public double getWeight(FoodStuff foodstuff) {
-        return get(foodstuff);
+    public double getWeight(Product product) {
+        return get(product);
     }
 }

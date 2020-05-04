@@ -16,7 +16,7 @@ public class DishAddingPanel extends JPanel {
         private FormPanel formPanel;
         private TextPanel textPanel;
         private JButton homeButton;
-        private JButton foodStuffAddingButton;
+        private JButton productAddingButton;
         private JButton holidayAddingButton;
         private JPanel buttonPanel;
         private TableIngredientsPanel tableIngredientsPanel;
@@ -43,7 +43,7 @@ public class DishAddingPanel extends JPanel {
             //textPanel.setText(dishController.getInfo());
             homeButton = new JButton("На домашню сторінку");
             holidayAddingButton = new JButton("Створити свято");
-            foodStuffAddingButton = new JButton("Додати свій продукт");
+            productAddingButton = new JButton("Додати свій продукт");
             buttonPanel = new JPanel();
             //////////////setting up menu bar//////////////////////////////////////////////////
 
@@ -79,7 +79,7 @@ public class DishAddingPanel extends JPanel {
                     formPanel.blankFields();
                     databasesPanel.refresh();
                     tableIngredientsPanel.clean();
-                    panelListener.stuffAdded();
+                    panelListener.productAdded();
                     ingredients.clear();
                     weights.clear();
                 }
@@ -87,7 +87,7 @@ public class DishAddingPanel extends JPanel {
 
             buttonPanel.setLayout(new GridLayout(1, 3));
             buttonPanel.add(homeButton);
-            buttonPanel.add(foodStuffAddingButton);
+            buttonPanel.add(productAddingButton);
             buttonPanel.add(holidayAddingButton);
             Dimension dim = buttonPanel.getPreferredSize();
             dim.height = 100;
@@ -119,7 +119,7 @@ public class DishAddingPanel extends JPanel {
         public void setNavigateListener(ActionListener navigateListener){
             homeButton.addActionListener(navigateListener);
             holidayAddingButton.addActionListener(navigateListener);
-            foodStuffAddingButton.addActionListener(navigateListener);
+            productAddingButton.addActionListener(navigateListener);
         }
         public void refresh(){
             databasesPanel.refresh();

@@ -1,7 +1,5 @@
 package model;
 
-import java.util.HashMap;
-
 public class Dish extends Recipe{
     public static int MainDish = 0;
     public static int Meat = 1;
@@ -44,7 +42,7 @@ public class Dish extends Recipe{
 
     public float getPrice() {
         float answer = 0;
-        for(FoodStuff i: keySet()){
+        for(Product i: keySet()){
             answer += (i.getPrice() * get(i) )/(float)1000;
         }
         return answer;

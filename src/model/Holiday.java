@@ -38,13 +38,13 @@ public class Holiday {
         String answer = "";
         HashMap<String, Integer> products = new HashMap<>();
         for(Dish dish: dishes){
-            for(FoodStuff stuff: dish.keySet()){
-                if(!products.keySet().contains(stuff.getName()))
-                    products.put(stuff.getName(), dish.get(stuff));
+            for(Product product: dish.keySet()){
+                if(!products.keySet().contains(product.getName()))
+                    products.put(product.getName(), dish.get(product));
                 else{
-                    products.put(stuff.getName()
-                            ,products.get(stuff.getName()) +
-                                    dish.get(stuff.getName()));
+                    products.put(product.getName()
+                            ,products.get(product.getName()) +
+                                    dish.get(product.getName()));
                 }
             }
         }

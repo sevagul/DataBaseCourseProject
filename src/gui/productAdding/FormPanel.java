@@ -1,4 +1,4 @@
-package gui.foodStuffAdding;
+package gui.productAdding;
 
 import Utils.Utils;
 

@@ -5,7 +5,7 @@ import Utils.Utils;
 import java.io.*;
 import java.util.ArrayList;
 
-public class FoodBase extends ArrayList<FoodStuff> {
+public class FoodBase extends ArrayList<Product> {
     int count;
     public FoodBase(){
         super();
@@ -13,16 +13,16 @@ public class FoodBase extends ArrayList<FoodStuff> {
         count = getNextId();
         addFromFile("additionalFood.txt");
     }
-    public void putStuff(String name, int price){
+    public void putProduct(String name, int price){
         boolean accept = true;
-        for(FoodStuff stuff: this){
-            if(stuff.getName().equals(name)) {
+        for(Product product: this){
+            if(product.getName().equals(name)) {
                 accept = false;
-                stuff.setPrice(price);
+                product.setPrice(price);
             }
         }
         if(accept){
-            add(new FoodStuff(name, price, count));
+            add(new Product(name, price, count));
             count ++;
         }
     }
@@ -48,7 +48,7 @@ public class FoodBase extends ArrayList<FoodStuff> {
             {
                 String[] words = datal.split("\t");
                 if(words.length == 3)
-                    add(new FoodStuff(words[1], Utils.stringToNatural(words[2]), Utils.stringToNatural(words[0])));
+                    add(new Product(words[1], Utils.stringToNatural(words[2]), Utils.stringToNatural(words[0])));
                 datal = br.readLine();
             }
             br.close();
@@ -72,7 +72,7 @@ public class FoodBase extends ArrayList<FoodStuff> {
             {
                 String[] words = datal.split("\t");
                 if(words.length == 2)
-                    putStuff(words[0], Utils.stringToNatural(words[1]));
+                    putProduct(words[0], Utils.stringToNatural(words[1]));
                 datal = br.readLine();
             }
             br.close();
@@ -88,8 +88,8 @@ public class FoodBase extends ArrayList<FoodStuff> {
 
     public String getInfo(){
         String answer = "";
-        for(FoodStuff stuff:this){
-            answer = answer.concat(stuff.getInfo());
+        for(Product product:this){
+            answer = answer.concat(product.getInfo());
         }
         return answer;
     }
@@ -106,16 +106,16 @@ public class FoodBase extends ArrayList<FoodStuff> {
     }
     public int getNextId(){
         int answer = 0;
-        for(FoodStuff stuff: this){
-            if(stuff.getId() >= answer);
-                answer = stuff.getId() + 1;
+        for(Product product: this){
+            if(product.getId() >= answer);
+                answer = product.getId() + 1;
         }
         return answer;
     }
-    public FoodStuff getById(int id){
-        for(FoodStuff stuff: this){
-            if(stuff.getId() == id){
-                return stuff;
+    public Product getById(int id){
+        for(Product product: this){
+            if(product.getId() == id){
+                return product;
             }
         }
         return null;

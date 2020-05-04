@@ -2,7 +2,7 @@ package gui;
 
 import Controller.MainController;
 import gui.dishAdding.DishAddingPanel;
-import gui.foodStuffAdding.FoodstuffAddingPanel;
+import gui.productAdding.ProductAddingPanel;
 import gui.holidayAdding.HolidayAddingPanel;
 import gui.holidayAdding.FormEvent;
 import gui.holidayAdding.FormListener;
@@ -16,7 +16,7 @@ public class MainFrame extends JFrame {
 
     private MenuBar menuBar;
     private HolidayAddingPanel holidayAddingPanel;
-    private FoodstuffAddingPanel foodstuffAddingPanel;
+    private ProductAddingPanel productAddingPanel;
     private DishAddingPanel dishAddingPanel;
     private MainController controller;
     private HelloPanel helloPanel;
@@ -37,7 +37,7 @@ public class MainFrame extends JFrame {
         holidayAddingPanel = new HolidayAddingPanel(controller);
         helloPanel = new HelloPanel();
         dishAddingPanel = new DishAddingPanel(controller.getDishController());
-        foodstuffAddingPanel = new FoodstuffAddingPanel(controller.getFoodController());
+        productAddingPanel = new ProductAddingPanel(controller.getFoodController());
 
         ///setting up menu bar
         Menu menu = new Menu("Вийти");
@@ -61,7 +61,7 @@ public class MainFrame extends JFrame {
                 getContentPane().removeAll();
                 getContentPane().repaint();
                 if(( (JButton)e.getSource() ).getText().equals("Додати свій продукт"))
-                    add(foodstuffAddingPanel);
+                    add(productAddingPanel);
                 if(( (JButton)e.getSource() ).getText().equals("На домашню сторінку"))
                     add(helloPanel);
                 if(( (JButton)e.getSource() ).getText().equals("Додати свою страву"))
@@ -95,17 +95,17 @@ public class MainFrame extends JFrame {
             }
         });
 
-        //////////////setting up foodStuffAddingPanel panel/////////////////////////////////////////////////
-        foodstuffAddingPanel.setNavigateListener(navigateListener);
-        foodstuffAddingPanel.setPanelListener(new PanelListener() {
+        //////////////setting up productAddingPanel panel/////////////////////////////////////////////////
+        productAddingPanel.setNavigateListener(navigateListener);
+        productAddingPanel.setPanelListener(new PanelListener() {
             @Override
-            public void stuffAdded() {
+            public void productAdded() {
                 dishAddingPanel.refresh();
             }
         });
         dishAddingPanel.setPanelListener(new PanelListener() {
             @Override
-            public void stuffAdded() {
+            public void productAdded() {
                 holidayAddingPanel.refresh();
             }
         });

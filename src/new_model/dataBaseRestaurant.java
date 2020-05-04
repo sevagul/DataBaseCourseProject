@@ -1,34 +1,34 @@
 package new_model;
 
-import Utils.Utils;
-import model.FoodBase;
-import model.FoodStuff;
-import org.jetbrains.annotations.NotNull;
+import Controller.FoodController;
 
-import java.io.*;
 import java.sql.*;
 
 public class dataBaseRestaurant {
-    private FoodControl foodControl;
+    private FoodControllerSql foodController;
     private String dataBase;
-    private Connection con;
+    private String user = "root";
+    private String password = "root";
+    //private Connection con;
+    public dataBaseRestaurant(String dataBase, String user, String password){
+        this.dataBase = dataBase;
+        this.password=password;
+        this.user=user;
+        foodController = new FoodControllerSql(dataBase, user, password);
+    }
     public dataBaseRestaurant(String dataBase){
         this.dataBase = dataBase;
-        connectToDataBase();
-        foodControl = new FoodControl(con);
+        foodController = new FoodControllerSql(dataBase, user, password);
     }
 
-    public FoodControl getFoodControl() {
-        return foodControl;
+    public FoodControllerSql getFoodController() {
+        return foodController;
     }
 
     //It talks too much, disable it later
-    public void connectToDataBase(){
+    /*public void connectToDataBase(){
         try{
-            String url = dataBase;
-            String user = "root";
-            String password = "root";
-            con = DriverManager.getConnection(url, user, password);
+            con = DriverManager.getConnection(dataBase, user, password);
             Statement stm = con.createStatement();
             String query = "Select * from products";
             ResultSet res = stm.executeQuery(query);
@@ -40,7 +40,7 @@ public class dataBaseRestaurant {
         } catch (Exception ex){
             ex.printStackTrace();
         }
-    }
+    }*/
     //This function is needed only while changing the dataBase from local to mySQL
 
 }

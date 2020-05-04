@@ -1,6 +1,7 @@
-package gui.foodStuffAdding;
+package gui.productAdding;
 
 import Controller.FoodController;
+import Controller.FoodControllerTxt;
 import gui.PanelListener;
 import gui.holidayAdding.TextPanel;
 
@@ -8,7 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class FoodstuffAddingPanel extends JPanel {
+public class ProductAddingPanel extends JPanel {
     private FoodController foodController;
     private FormPanel formPanel;
     private TextPanel textPanel;
@@ -18,7 +19,7 @@ public class FoodstuffAddingPanel extends JPanel {
     private JButton holidayAddingButton;
     private PanelListener panelListener;
 
-    public FoodstuffAddingPanel(FoodController foodController){
+    public ProductAddingPanel(FoodController foodController){
         super();
         this.foodController = foodController;
 
@@ -51,11 +52,11 @@ public class FoodstuffAddingPanel extends JPanel {
                     formPanel.setError("(Некоректно вказана ціна)");
                     return;
                 }
-                foodController.putStuff(event.getfoodName(), event.getfoodPrice());
+                foodController.putProduct(event.getfoodName(), event.getfoodPrice());
                 textPanel.setText(foodController.getInfo());
                 formPanel.setError("()");
                 formPanel.blankFields();
-                panelListener.stuffAdded();
+                panelListener.productAdded();
             }
         });
 

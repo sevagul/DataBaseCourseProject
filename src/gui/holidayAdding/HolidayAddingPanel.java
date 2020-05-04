@@ -10,7 +10,7 @@ public class HolidayAddingPanel extends JPanel {
     private TextPanel textPanel;
     private JPanel buttonPanel;
     private JButton homeButton;
-    private JButton foodStuffAddingButton;
+    private JButton productAddingButton;
     private JButton dishAddingButton;
     private MainController controller;
     private int state;
@@ -26,13 +26,13 @@ public class HolidayAddingPanel extends JPanel {
         textPanel = new TextPanel();
         buttonPanel = new JPanel();
         dishAddingButton = new JButton("Додати свою страву");
-        foodStuffAddingButton = new JButton("Додати свій продукт");
+        productAddingButton = new JButton("Додати свій продукт");
         homeButton = new JButton("На домашню сторінку");
         //////////////setting up menu bar//////////////////////////////////////////////////
         buttonPanel.setLayout(new GridLayout(1, 3));
         buttonPanel.add(homeButton);
         buttonPanel.add(dishAddingButton);
-        buttonPanel.add(foodStuffAddingButton);
+        buttonPanel.add(productAddingButton);
         Dimension dim = buttonPanel.getPreferredSize();
         dim.height = 100;
         buttonPanel.setPreferredSize(dim);
@@ -55,7 +55,7 @@ public class HolidayAddingPanel extends JPanel {
     public void setNavigateListener(ActionListener navigateListener){
         homeButton.addActionListener(navigateListener);
         dishAddingButton.addActionListener(navigateListener);
-        foodStuffAddingButton.addActionListener(navigateListener);
+        productAddingButton.addActionListener(navigateListener);
     }
 
     public int getState() {

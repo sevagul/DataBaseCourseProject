@@ -1,4 +1,4 @@
-package gui.foodStuffAdding;
+package gui.productAdding;
 
 public class FormEvent {
         private String foodName;

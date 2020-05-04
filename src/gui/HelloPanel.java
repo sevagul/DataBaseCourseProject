@@ -6,12 +6,12 @@ import java.awt.event.ActionListener;
 
 public class HelloPanel extends JPanel {
     private JButton holidayAddingPanelButton;
-    private JButton foodStuffAddingPanelButton;
+    private JButton productAddingPanelButton;
     private JButton dishAddingPanelButton;
 
     HelloPanel(){
         holidayAddingPanelButton = new JButton("Створити свято");
-        foodStuffAddingPanelButton = new JButton("Додати свій продукт");
+        productAddingPanelButton = new JButton("Додати свій продукт");
         dishAddingPanelButton = new JButton("Додати свою страву");
 
         setLayout(new GridBagLayout());
@@ -26,7 +26,7 @@ public class HelloPanel extends JPanel {
 
         //// adding components ///////
         addComponent(holidayAddingPanelButton, gc, false);
-        addComponent(foodStuffAddingPanelButton, gc, false);
+        addComponent(productAddingPanelButton, gc, false);
         addComponent(dishAddingPanelButton, gc, false);
 
     }
@@ -47,7 +47,7 @@ public class HelloPanel extends JPanel {
     }
     public void setNavigateListener(ActionListener navigateListener){
         dishAddingPanelButton.addActionListener(navigateListener);
-        foodStuffAddingPanelButton.addActionListener(navigateListener);
+        productAddingPanelButton.addActionListener(navigateListener);
         holidayAddingPanelButton.addActionListener(navigateListener);
     }
 }

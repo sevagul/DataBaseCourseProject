@@ -2,17 +2,17 @@ package model;
 
 import java.util.ArrayList;
 
-public class FoodStuff {
+public class Product {
     String name;
     int price; //per unit(kg, litre, bottle(vine), units(egg))
     int id;
 
-    public FoodStuff(String name, int price, int id) {
+    public Product(String name, int price, int id) {
         this.name = name;
         this.price = price;
         this.id = id;
     }
-    public FoodStuff(String name, int price) {
+    public Product(String name, int price) {
         this.name = name;
         this.price = price;
         this.id = -1;
@@ -50,7 +50,7 @@ public class FoodStuff {
 
     @Override
     public String toString() {
-        return "FoodStuff{" +
+        return "Product{" +
                 "name='" + name + '\'' +
                 ", price=" + price +
                 ", id=" + id +
