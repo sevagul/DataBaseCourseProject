@@ -9,7 +9,6 @@ public class dataBaseRestaurant {
     private String dataBase;
     private String user = "root";
     private String password = "root";
-    //private Connection con;
     public dataBaseRestaurant(String dataBase, String user, String password){
         this.dataBase = dataBase;
         this.password=password;

@@ -33,6 +33,8 @@ public class ControlTable {
         System.out.println(this.user);
     }
 
+
+
     public void putRecord(ArrayList<String> values) {
         try{
             Connection con = connectToDataBase();
