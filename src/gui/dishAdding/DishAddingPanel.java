@@ -1,6 +1,7 @@
 package gui.dishAdding;
 
 import Controller.DishController;
+import Controller.FoodController;
 import gui.PanelListener;
 import gui.holidayAdding.TextPanel;
 import model.Recipe;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 
 public class DishAddingPanel extends JPanel {
         private DishController dishController;
+        private FoodController foodController;
         private FormPanel formPanel;
         private TextPanel textPanel;
         private JButton homeButton;
@@ -25,9 +27,10 @@ public class DishAddingPanel extends JPanel {
         private DatabasesPanel databasesPanel;
         private PanelListener panelListener;
 
-        public DishAddingPanel(DishController dishController){
+        public DishAddingPanel(DishController dishController, FoodController foodController){
             super();
             this.dishController = dishController;
+            this.foodController = foodController;
 
             setLayout(new BorderLayout());
 
@@ -35,7 +38,7 @@ public class DishAddingPanel extends JPanel {
             formPanel = new FormPanel();
             textPanel = new TextPanel();
             tableIngredientsPanel = new TableIngredientsPanel();
-            databasesPanel = new DatabasesPanel(dishController);
+            databasesPanel = new DatabasesPanel(dishController, foodController);
 
             textPanel.setText(dishController.getFoodBase().getInfo());
             ingredients = new ArrayList<>();

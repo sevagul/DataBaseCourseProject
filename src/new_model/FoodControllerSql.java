@@ -1,4 +1,4 @@
-package new_model;
+/*package new_model;
 
 import Controller.FoodController;
 import model.FoodBase;
@@ -117,4 +117,4 @@ public class FoodControllerSql extends ControlTable implements FoodController {
     }
 
 
-}
+}*/

@@ -3,7 +3,7 @@ package Controller;
 import gui.holidayAdding.FormEvent;
 import model.Dish;
 import model.Holiday;
-import new_model.FoodControllerSql;
+import new_model.controllers.FoodControllerSql;
 import new_model.dataBaseRestaurant;
 
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ public class MainController {
     public MainController(){
         dishController = new DishController();
         //foodController = new FoodControllerTxt(dishController.getDishBase().getFoodBase());
-        //String dataBase = "jdbc:mysql://localhost:8889/restaurant";
-        //dataBaseRestaurant dataBaseRestaurant = new dataBaseRestaurant(dataBase);
+        String dataBase = "jdbc:mysql://localhost:8889/restaurant?useSSL=false";
+        foodController = new FoodControllerSql(dataBase);
     }
 
     public void setHoliday(FormEvent event){

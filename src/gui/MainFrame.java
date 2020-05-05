@@ -36,7 +36,7 @@ public class MainFrame extends JFrame {
         menuBar = new MenuBar();
         holidayAddingPanel = new HolidayAddingPanel(controller);
         helloPanel = new HelloPanel();
-        dishAddingPanel = new DishAddingPanel(controller.getDishController());
+        dishAddingPanel = new DishAddingPanel(controller.getDishController(), controller.getFoodController());
         productAddingPanel = new ProductAddingPanel(controller.getFoodController());
 
         ///setting up menu bar

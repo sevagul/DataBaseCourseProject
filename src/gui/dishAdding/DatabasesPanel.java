@@ -1,6 +1,7 @@
 package gui.dishAdding;
 
 import Controller.DishController;
+import Controller.FoodController;
 import gui.holidayAdding.TextPanel;
 
 import javax.swing.*;
@@ -10,13 +11,14 @@ public class DatabasesPanel extends JPanel {
     TextPanel textPanel1;
     TextPanel textPanel2;
     DishController dishController;
-    public DatabasesPanel(DishController dishController){
+    FoodController foodController;
+    public DatabasesPanel(DishController dishController, FoodController foodController){
         this.dishController = dishController;
+        this.foodController = foodController;
         setLayout(new BorderLayout());
         textPanel1 = new TextPanel();
         textPanel2 = new TextPanel();
-        textPanel1.setText(dishController.getFoodBase().getReadableInfo());
-        textPanel2.setText(dishController.getDishBase().getReadableInfo());
+        refresh();
 
 
 
@@ -25,7 +27,7 @@ public class DatabasesPanel extends JPanel {
 
     }
     public void refresh(){
-        textPanel1.setText(dishController.getFoodBase().getReadableInfo());
+        textPanel1.setText(foodController.getInfo());
         textPanel2.setText(dishController.getDishBase().getReadableInfo());
     }
 }
