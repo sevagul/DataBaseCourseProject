@@ -3,8 +3,8 @@ package Controller;
 import gui.holidayAdding.FormEvent;
 import model.Dish;
 import model.Holiday;
+import new_model.controllers.DishControllerSql;
 import new_model.controllers.FoodControllerSql;
-import new_model.dataBaseRestaurant;
 
 import java.util.ArrayList;
 
@@ -14,16 +14,15 @@ public class MainController {
     FoodController foodController;
 
     public MainController(){
-        dishController = new DishController();
-        //foodController = new FoodControllerTxt(dishController.getDishBase().getFoodBase());
         String dataBase = "jdbc:mysql://localhost:8889/restaurant?useSSL=false";
+        dishController = new DishControllerSql(dataBase);
         foodController = new FoodControllerSql(dataBase);
     }
 
     public void setHoliday(FormEvent event){
         ArrayList<Dish> dishes = new ArrayList<Dish>();
         for(String dishName: event.getDishes()){
-            dishes.add(dishController.getDishBase().getDish(dishName));
+            dishes.add(dishController.getDish(dishName));
         }
         holiday = new Holiday(event.getHolidayName(), event.getPeopleAmount(), dishes);
     }
@@ -36,15 +35,7 @@ public class MainController {
         }
         return answer;
     }
-    public int getPrice(){
-        return holiday.countPrice();
-    }
-    public String getHolidayName(){
-        return holiday.getName();
-    }
-    public int getPeopleAmount(){
-        return holiday.getPeopleAmount();
-    }
+
     public String getInfo(){
         String answer;
         answer = "  Свято: " + holiday.getName() + "\n  Страви: \n";
@@ -55,7 +46,6 @@ public class MainController {
         answer = answer.concat("  Приблизна вартість: " + holiday.countPrice() + "\n");
         answer += "Список Необхідних Продуктів:\n";
         answer += holiday.getProductsInfo();
-        dishController.getDishBase().saveToFile("Base.txt");
         return answer;
     }
 

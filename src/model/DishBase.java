@@ -1,5 +1,6 @@
 package model;
 
+import Controller.FoodControllerTxt;
 import Utils.Utils;
 
 import java.io.*;
@@ -114,7 +115,7 @@ public class DishBase extends ArrayList<Dish> {
                     datal = br.readLine();
                 }
                 datal = br.readLine();
-                addDish(name, new Recipe(foodBase, ingr, weights, 1), type, id);
+                addDish(name, new Recipe(new FoodControllerTxt(foodBase), ingr, weights, 1), type, id);
             }
             br.close();
         }

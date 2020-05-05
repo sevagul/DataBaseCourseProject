@@ -1,6 +1,7 @@
 package gui.dishAdding;
 
 import Controller.DishController;
+import Controller.DishControllerTxt;
 import Controller.FoodController;
 import gui.holidayAdding.TextPanel;
 
@@ -28,6 +29,6 @@ public class DatabasesPanel extends JPanel {
     }
     public void refresh(){
         textPanel1.setText(foodController.getInfo());
-        textPanel2.setText(dishController.getDishBase().getReadableInfo());
+        textPanel2.setText(dishController.getReadableInfo());
     }
 }

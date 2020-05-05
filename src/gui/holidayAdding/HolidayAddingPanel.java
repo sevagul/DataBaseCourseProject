@@ -22,7 +22,7 @@ public class HolidayAddingPanel extends JPanel {
         state = 0;
         setLayout(new BorderLayout());
         //////////////setting up components/////////////////////////////////////////////////
-        formPanel = new FormPanel(controller);
+        formPanel = new FormPanel(this.controller);
         textPanel = new TextPanel();
         buttonPanel = new JPanel();
         dishAddingButton = new JButton("Додати свою страву");

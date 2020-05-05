@@ -1,6 +1,7 @@
 package gui.dishAdding;
 
 import Controller.DishController;
+import Controller.DishControllerTxt;
 import Controller.FoodController;
 import gui.PanelListener;
 import gui.holidayAdding.TextPanel;
@@ -38,9 +39,9 @@ public class DishAddingPanel extends JPanel {
             formPanel = new FormPanel();
             textPanel = new TextPanel();
             tableIngredientsPanel = new TableIngredientsPanel();
-            databasesPanel = new DatabasesPanel(dishController, foodController);
+            databasesPanel = new DatabasesPanel(this.dishController, this.foodController);
 
-            textPanel.setText(dishController.getFoodBase().getInfo());
+            textPanel.setText(foodController.getInfo());
             ingredients = new ArrayList<>();
             weights = new ArrayList<>();
             //textPanel.setText(dishController.getInfo());
@@ -53,12 +54,12 @@ public class DishAddingPanel extends JPanel {
             formPanel.addFormListener(new FormListener() {
                 @Override
                 public void ingredientAdded(FormEvent event) {
-                    if(event.getAmount() < 0 || event.getIngredient() < 0 || event.getIngredient() >= dishController.getFoodBase().getNextId()){
+                    if(event.getAmount() < 0 || event.getIngredient() < 0 || foodController.count("product_id", String.valueOf(event.getIngredient())) != 1 ){
                         formPanel.setError("Некорректні дані про інгредієнт");
                         return;
                     }
                     int amount = event.getAmount();
-                    String name = dishController.getFoodBase().getById(event.getIngredient()).getName();
+                    String name = foodController.getName(event.getIngredient());
                     tableIngredientsPanel.addIngredient(name, amount);
                     tableIngredientsPanel.refresh();
                     ingredients.add(event.getIngredient());
@@ -74,11 +75,11 @@ public class DishAddingPanel extends JPanel {
                         formPanel.setError("Порожнє поле з назвою");
                         return;
                     }
-                    if(dishController.getDishBase().contains(event.getDishName())){
+                    if(dishController.contains(event.getDishName())){
                         formPanel.setError("Страва з такою назвою вже є");
                         return;
                     }
-                    dishController.getDishBase().addDish(event.getDishName(), new Recipe(dishController.getFoodBase(), ingredients, weights, event.getPeopleAmount()), event.getDishType());
+                    dishController.addDish(event.getDishName(), ingredients, weights, event.getPeopleAmount(), event.getDishType());
                     formPanel.blankFields();
                     databasesPanel.refresh();
                     tableIngredientsPanel.clean();

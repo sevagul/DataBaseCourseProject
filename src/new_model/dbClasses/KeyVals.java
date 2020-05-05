@@ -1,5 +1,7 @@
 package new_model.dbClasses;
 
+import Utils.Utils;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,5 +38,8 @@ public class KeyVals extends HashMap<String, String> {
     }
     public String deleteLastComa(String str){
         return str.strip().substring(0, str.length() - 2);
+    }
+    public int getInt(String key){
+        return Utils.stringToNatural(get(key));
     }
 }

@@ -1,5 +1,6 @@
 package new_model.controllers;
 
+import Utils.Utils;
 import new_model.dbClasses.KeyVals;
 import new_model.dbClasses.SelectResult;
 
@@ -149,6 +150,21 @@ public class DbController {
     }
     public void insertIntoTable(String tableName, String[] values){
         insertIntoTable(tableName, new ArrayList<>(Arrays.asList(values)));
+    }
+
+    public int countInTable(String tableName, String condition){
+        String query = "SELECT COUNT(*) FROM " + tableName + " WHERE " + condition;
+        SelectResult res =  select(query);
+        if(res.size() != 1){
+            return -1;
+        }
+        return Utils.stringToNatural(res.get(0).get("COUNT(*)")) ;
+    }
+    public int countInTable(String tableName, KeyVals condition){
+        return countInTable(tableName, condition.getUpdateConditionAnd());
+    }
+    public int countInTable(String tableName, String colIndex, String valIndex){
+        return countInTable(tableName, new KeyVals(colIndex, valIndex));
     }
 
     public Connection connectToDataBase() {

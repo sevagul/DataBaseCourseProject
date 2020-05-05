@@ -1,11 +1,11 @@
 package model;
 
 public class Dish extends Recipe{
-    public static int MainDish = 0;
-    public static int Meat = 1;
-    public static int Drink = 2;
-    public static int Salat = 3;
-    public static int Apetizzer = 4;
+    public static int MainDish = 1;
+    public static int Meat = 2;
+    public static int Drink = 3;
+    public static int Salat = 4;
+    public static int Apetizzer = 5;
 
     private int type;
     private String name;
@@ -50,5 +50,13 @@ public class Dish extends Recipe{
 
     public int getType() {
         return type;
+    }
+    public String getInfo(){
+        String answ = name + ":\n";
+        for( Product product  : keySet()){
+            answ += product.getName() + " + ";
+        }
+        answ = answ.substring(0, answ.length() -2);
+        return answ + "\n";
     }
 }

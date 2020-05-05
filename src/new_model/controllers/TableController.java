@@ -12,6 +12,17 @@ public class TableController extends DbController{
         super(dataBase, user, password);
         this.tableName = tableName;
     }
+
+    public int count(String condition) {
+        return super.countInTable(tableName, condition);
+    }
+    public int count(KeyVals condition) {
+        return super.countInTable(tableName, condition);
+    }
+    public int count(String colIndex, String valIndex) {
+        return super.countInTable(tableName, colIndex, valIndex);
+    }
+
     public TableController(String dataBase, String tableName) {
         super(dataBase);
         this.tableName = tableName;
@@ -31,6 +42,12 @@ public class TableController extends DbController{
     }
     public SelectResult select(String field, String condition) {
         return super.selectFromTable(tableName, field, condition);
+    }
+    public KeyVals selectOne(ArrayList<String> fields, String condition) {
+        SelectResult resDish = select(fields, condition);
+        if (resDish.size() != 1)
+            return null;
+        return resDish.get(0);
     }
     public SelectResult selectFromTable(String field) {
         return super.selectFromTable(tableName, field);
@@ -66,7 +83,10 @@ public class TableController extends DbController{
         super.updateTable(tableName, colUp, newVal, colIndex, valIndex);
     }
 
-    
+    public boolean contains(String colIndex, String valIndex){
+        return count(colIndex, valIndex) > 0;
+    }
+
     public void insert(ArrayList<String> values) {
         super.insertIntoTable(tableName, values);
     }
