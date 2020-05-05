@@ -1,7 +1,6 @@
 package gui.productAdding;
 
 import Controller.FoodController;
-import Controller.FoodControllerTxt;
 import gui.PanelListener;
 import gui.holidayAdding.TextPanel;
 
@@ -39,25 +38,22 @@ public class ProductAddingPanel extends JPanel {
         buttonPanel.setPreferredSize(dim);
         //////////////setting up menu bar//////////////////////////////////////////////////
 
-        formPanel.addFormListener(new FormListener() {
-            @Override
-            public void formEventOccured(FormEvent event) {
-                if(event.getfoodName().equals(""))
-                {
-                    formPanel.setError("(Порожнє поле з назвою)");
-                    return;
-                }
-                if(event.getfoodPrice() == -1 || event.getfoodPrice() == 0)
-                {
-                    formPanel.setError("(Некоректно вказана ціна)");
-                    return;
-                }
-                foodController.putProduct(event.getfoodName(), event.getfoodPrice());
-                textPanel.setText(foodController.getInfo());
-                formPanel.setError("()");
-                formPanel.blankFields();
-                panelListener.productAdded();
+        formPanel.addFormListener(event -> {
+            if(event.getfoodName().equals(""))
+            {
+                formPanel.setError("(Порожнє поле з назвою)");
+                return;
             }
+            if(event.getfoodPrice() == -1 || event.getfoodPrice() == 0)
+            {
+                formPanel.setError("(Некоректно вказана ціна)");
+                return;
+            }
+            foodController.putProduct(event.getfoodName(), event.getfoodPrice());
+            textPanel.setText(foodController.getInfo());
+            formPanel.setError("()");
+            formPanel.blankFields();
+            panelListener.productAdded();
         });
 
 

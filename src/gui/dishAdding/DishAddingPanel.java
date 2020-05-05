@@ -1,11 +1,9 @@
 package gui.dishAdding;
 
 import Controller.DishController;
-import Controller.DishControllerTxt;
 import Controller.FoodController;
 import gui.PanelListener;
 import gui.holidayAdding.TextPanel;
-import model.Recipe;
 
 import javax.swing.*;
 import java.awt.*;
