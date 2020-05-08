@@ -22,6 +22,7 @@ public class TableController extends DbController{
     public int count(String colIndex, String valIndex) {
         return super.countInTable(tableName, colIndex, valIndex);
     }
+    public int count() { return count("1"); }
 
     public TableController(String dataBase, String tableName) {
         super(dataBase);
@@ -52,7 +53,9 @@ public class TableController extends DbController{
     public SelectResult selectFromTable(String field) {
         return super.selectFromTable(tableName, field);
     }
-
+    public String getValue(int row, String col){
+        return select(ALL).get(row).get(col);
+    }
 
     public void delete(String condition) {
         super.deleteFromTable(tableName, condition);

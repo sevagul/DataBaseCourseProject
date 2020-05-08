@@ -13,7 +13,7 @@ public class TableIngredientsPanel extends JPanel {
         setPreferredSize(dim);
         tableIngredientsModel = new TableIngredientsModel();
         table = new JTable(tableIngredientsModel);
-        System.out.println(table.getTableHeader());
+        //System.out.println(table.getTableHeader());
 
         table.setFillsViewportHeight(true);
         table.setRowSelectionAllowed(false);

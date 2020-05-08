@@ -3,9 +3,11 @@ package Controller;
 import model.Product;
 
 public interface FoodController {
-    public String getInfo();
-    public void putProduct(String name, int price);
-    public int count(String col, String val);
-    public String getName(int id);
+    String getInfo();
+    void putProduct(String name, int price);
+    int count(String col, String val);
+    String getName(int id);
     Product getProduct(int ingredient);
+    int count();
+    String getValue (int row, String col);
 }
