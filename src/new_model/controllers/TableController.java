@@ -44,6 +44,9 @@ public class TableController extends DbController{
     public SelectResult select(String field, String condition) {
         return super.selectFromTable(tableName, field, condition);
     }
+    public SelectResult select() {
+        return select(ALL);
+    }
     public KeyVals selectOne(ArrayList<String> fields, String condition) {
         SelectResult resDish = select(fields, condition);
         if (resDish.size() != 1)

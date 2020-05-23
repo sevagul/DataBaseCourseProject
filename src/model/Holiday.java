@@ -44,7 +44,7 @@ public class Holiday {
                 else{
                     products.put(product.getName()
                             ,products.get(product.getName()) +
-                                    dish.get(product.getName()));
+                                    dish.get(product));
                 }
             }
         }

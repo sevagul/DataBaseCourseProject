@@ -1,6 +1,7 @@
 package gui;
 
 import Controller.MainController;
+import gui.dishAdding.AutoCompletedTextField;
 import gui.dishAdding.DishAddingPanel;
 import gui.productAdding.ProductAddingPanel;
 import gui.holidayAdding.HolidayAddingPanel;
@@ -25,7 +26,7 @@ public class MainFrame extends JFrame {
 
     public MainFrame(){
         ///////////////setting up default frame settings///////////////////
-        super("Курсова Новорічна робота");
+        super("Курсова Робота з Баз Даних");
         setLayout(new BorderLayout());
         setSize(1000, 800);
         setMinimumSize(new Dimension(900, 400));
@@ -60,11 +61,11 @@ public class MainFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 getContentPane().removeAll();
                 getContentPane().repaint();
-                if(( (JButton)e.getSource() ).getText().equals("Додати свій продукт"))
+                if(( (JButton)e.getSource() ).getText().equals("База Продуктів"))
                     add(productAddingPanel);
                 if(( (JButton)e.getSource() ).getText().equals("На домашню сторінку"))
                     add(helloPanel);
-                if(( (JButton)e.getSource() ).getText().equals("Додати свою страву"))
+                if(( (JButton)e.getSource() ).getText().equals("База страв"))
                     add(dishAddingPanel);
                 if(( (JButton)e.getSource() ).getText().equals("Створити свято"))
                     add(holidayAddingPanel);
@@ -115,6 +116,7 @@ public class MainFrame extends JFrame {
 
         //////////////adding components/////////////////////////////////////////////////////
         add(helloPanel, BorderLayout.CENTER);
+        //add(new AutoCompletedTextField(controller.getFoodController()));
 
         setVisible(true);
     }

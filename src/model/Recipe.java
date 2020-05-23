@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class Recipe extends HashMap<Product, Integer> {
     private FoodController foodController;
+    int peopleAmount;
 
     public Recipe(){
         super();
@@ -17,6 +18,7 @@ public class Recipe extends HashMap<Product, Integer> {
     }
 
     public Recipe(FoodController foodController, int[] ingredients, int[] weights, int peopleAmount){
+        this.peopleAmount = peopleAmount;
         this.foodController = foodController;
         if(ingredients.length != weights.length)
             return;
@@ -27,11 +29,12 @@ public class Recipe extends HashMap<Product, Integer> {
         }
         for(int i = 0; i < ingredients.length; i++){
             Product product = foodController.getProduct(ingredients[i]);
-            put(product, (int) Math.ceil(weights[i]/(double)(peopleAmount)));
+            put(product, weights[i]);
         }
     }
 
     public Recipe(FoodController foodController, ArrayList<Integer> ingredients, ArrayList<Integer> weights, int peopleAmount){
+        this.peopleAmount = peopleAmount;
         this.foodController = foodController;
         if(ingredients.size() != weights.size())
             return;
@@ -42,7 +45,7 @@ public class Recipe extends HashMap<Product, Integer> {
         }
         for(int i = 0; i < ingredients.size(); i++){
             Product product = foodController.getProduct(ingredients.get(i));
-            put(product, (int) Math.ceil(weights.get(i)/(double)(peopleAmount)));
+            put(product, weights.get(i));
         }
     }
 
@@ -50,7 +53,7 @@ public class Recipe extends HashMap<Product, Integer> {
         if(ingredients.length != weights.length)
             return false;
         for(int i = 0; i < ingredients.length; i++){
-            put(foodController.getProduct(ingredients[i]), (int) (weights[i]/(double)(peopleAmount)));
+            put(foodController.getProduct(ingredients[i]), weights[i]);
         }
         return true;
     }

@@ -2,12 +2,12 @@ package gui.dishAdding;
 
 public class FormEvent {
     private String dishName;
-    private int ingredient;
+    private String ingredient;
     private int amount;
     private int peopleAmount;
     private int dishType;
 
-    public FormEvent(String dishName, int ingredient, int amount, int peopleAmount, int dishType) {
+    public FormEvent(String dishName, String ingredient, int amount, int peopleAmount, int dishType) {
         this.dishName = dishName;
         this.ingredient = ingredient;
         this.amount = amount;
@@ -19,7 +19,7 @@ public class FormEvent {
         return dishName;
     }
 
-    public int getIngredient() {
+    public String getIngredient() {
         return ingredient;
     }
 

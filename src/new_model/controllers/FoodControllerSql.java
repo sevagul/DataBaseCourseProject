@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FoodControllerSql extends TableController implements FoodController {
+    private String GetProductsLikeProcedure = "GetProductsLike";
 
     public FoodControllerSql(String dataBase, String user, String password) {
         super(dataBase, user, password, "products");
@@ -69,4 +70,21 @@ public class FoodControllerSql extends TableController implements FoodController
         return new Product(name, price, id);
     }
 
+    @Override
+    public int getId(String name) {
+        SelectResult res = select("product_id", "name='"+name+"'");
+        if (res.size() == 0)
+            return -1;
+        return Utils.stringToNatural(res.get(0).get("product_id"));
+    }
+
+    @Override
+    public ArrayList<String> getNamesLike(String prefix) {
+        SelectResult namesWithColumns = call(GetProductsLikeProcedure, prefix);
+        ArrayList<String> answ = new ArrayList<>();
+        namesWithColumns.stream().forEach(o->{
+            answ.add(o.get("name"));
+        });
+        return answ;
+    }
 }

@@ -2,6 +2,7 @@ package gui.productAdding;
 
 import Controller.FoodController;
 import gui.PanelListener;
+import gui.dishAdding.tableProducts.TableProductsPanel;
 import gui.holidayAdding.TextPanel;
 
 import javax.swing.*;
@@ -11,7 +12,8 @@ import java.awt.event.ActionListener;
 public class ProductAddingPanel extends JPanel {
     private FoodController foodController;
     private FormPanel formPanel;
-    private TextPanel textPanel;
+    //private TextPanel textPanel;
+    private TableProductsPanel tableProductsPanel;
     private JPanel buttonPanel;
     private JButton homeButton;
     private JButton dishAddingButton;
@@ -26,10 +28,11 @@ public class ProductAddingPanel extends JPanel {
 
         //////////////setting up components/////////////////////////////////////////////////
         formPanel = new FormPanel();
-        textPanel = new TextPanel();
-        textPanel.setText(foodController.getInfo());
+        //textPanel = new TextPanel();
+        //textPanel.setText(foodController.getInfo());
+        tableProductsPanel = new TableProductsPanel(foodController);
         homeButton = new JButton("На домашню сторінку");
-        dishAddingButton = new JButton("Додати свою страву");
+        dishAddingButton = new JButton("База страв");
         holidayAddingButton = new JButton("Створити свято");
         buttonPanel = new JPanel();
 
@@ -50,7 +53,8 @@ public class ProductAddingPanel extends JPanel {
                 return;
             }
             foodController.putProduct(event.getfoodName(), event.getfoodPrice());
-            textPanel.setText(foodController.getInfo());
+            //textPanel.setText(foodController.getInfo());
+            tableProductsPanel.refresh();
             formPanel.setError("()");
             formPanel.blankFields();
             panelListener.productAdded();
@@ -67,7 +71,7 @@ public class ProductAddingPanel extends JPanel {
 
 
         add(formPanel, BorderLayout.WEST);
-        add(textPanel, BorderLayout.CENTER);
+        add(tableProductsPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
 
     }
@@ -80,13 +84,13 @@ public class ProductAddingPanel extends JPanel {
         this.formPanel = formPanel;
     }
 
-    public TextPanel getTextPanel() {
-        return textPanel;
-    }
+//    public TextPanel getTextPanel() {
+//        return textPanel;
+//    }
 
-    public void setTextPanel(TextPanel textPanel) {
-        this.textPanel = textPanel;
-    }
+//    public void setTextPanel(TextPanel textPanel) {
+//        this.textPanel = textPanel;
+//    }
 
     public void setNavigateListener(ActionListener navigateListener){
         homeButton.addActionListener(navigateListener);

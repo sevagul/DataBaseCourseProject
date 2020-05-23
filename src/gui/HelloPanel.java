@@ -11,8 +11,8 @@ public class HelloPanel extends JPanel {
 
     HelloPanel(){
         holidayAddingPanelButton = new JButton("Створити свято");
-        productAddingPanelButton = new JButton("Додати свій продукт");
-        dishAddingPanelButton = new JButton("Додати свою страву");
+        productAddingPanelButton = new JButton("База Продуктів");
+        dishAddingPanelButton = new JButton("База страв");
 
         setLayout(new GridBagLayout());
 

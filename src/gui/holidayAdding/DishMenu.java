@@ -18,11 +18,7 @@ public class DishMenu extends JPopupMenu {
         addDishType("Основне...");
         addDishType("Напій...");
         addDishType("Закусон...");
-        for(int i = 0; i<5; i++){
-            for(String dish:controller.getDishesWithType(i)){
-                addDish(i, dish);
-            }
-        }
+        refresh();
     }
     public JMenu getMenu(String text){
         for(Component item: this.getComponents()){
@@ -34,6 +30,7 @@ public class DishMenu extends JPopupMenu {
         }
         return null;
     }
+
     public void addMenuItem(String text){
         add(new JMenuItem(text));
     }
@@ -57,7 +54,7 @@ public class DishMenu extends JPopupMenu {
 
         for(int i = 0; i < 5; i++){
             ((JMenu)getComponent(i)).removeAll();
-            for(String dish:controller.getDishesWithType(i)){
+            for(String dish:controller.getDishesWithType(i+1)){
                 addDish(i, dish);
             }
         }

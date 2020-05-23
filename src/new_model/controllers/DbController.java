@@ -106,6 +106,14 @@ public class DbController {
         return selectFromTable(tableName, field, "1");
     }
 
+    public SelectResult call(String procedure){
+        return select("call " + procedure);
+    }
+    public SelectResult call(String procedure, String parameter){
+        return select("call " + procedure + "('" + parameter + "')");
+    }
+
+
     //DELETE block
     public void deleteFromTable(String tableName, String condition){
         String query = "DELETE FROM " + tableName + " WHERE " + condition;

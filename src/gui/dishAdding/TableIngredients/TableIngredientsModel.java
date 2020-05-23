@@ -1,14 +1,23 @@
-package gui.dishAdding;
+package gui.dishAdding.TableIngredients;
+
+import Controller.DishController;
+import model.Dish;
+import model.Product;
+import model.Recipe;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 
 public class TableIngredientsModel extends AbstractTableModel {
     private ArrayList<String[]> rows;
     private String[] columnNames = {"Інгредієнт", "Кількість"};
+    private DishController dishController;
 
-    TableIngredientsModel(){
+    TableIngredientsModel(DishController dishController){
         rows = new ArrayList<String[]>();
+        this.dishController=dishController;
     }
 
     public void addIngredient(String ingredient, int amount){
@@ -19,7 +28,7 @@ public class TableIngredientsModel extends AbstractTableModel {
 
     @Override
     public String getColumnName(int column) {
-        if(column > -1 && column < 2)
+        if(column > -1 && column < columnNames.length)
             return columnNames[column];
         return "Out of columnes";
     }
@@ -42,5 +51,23 @@ public class TableIngredientsModel extends AbstractTableModel {
     }
     public void clean(){
         rows.clear();
+    }
+
+    public boolean isCellExists(int rowIndex, int columnIndex){
+        if(columnIndex >= 0 && columnIndex < columnNames.length && rowIndex < rows.size() && rowIndex >=0 ){
+            return true;
+        }
+        return false;
+    }
+    public void showDish(int id){
+        if(getRowCount() != 0){
+            clean();
+        }
+        Recipe recipe = dishController.getReciepe(id, 0);
+        for (Product product: recipe.keySet()) {
+            String name = product.getName();
+            Integer amount = recipe.get(product);
+            addIngredient(name, amount);
+        }
     }
 }

@@ -2,32 +2,63 @@ package gui.dishAdding;
 
 import Controller.DishController;
 import Controller.FoodController;
+import gui.dishAdding.TableDishes.DishTableListener;
+import gui.dishAdding.TableDishes.TableDishesPanel;
+import gui.dishAdding.tableProducts.TableProductsPanel;
 import gui.holidayAdding.TextPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class DatabasesPanel extends JPanel {
-    TextPanel textPanel1;
-    TextPanel textPanel2;
+    TableProductsPanel tableProductsPanel;
+    TableDishesPanel tableDishesPanel;
     DishController dishController;
     FoodController foodController;
     public DatabasesPanel(DishController dishController, FoodController foodController){
         this.dishController = dishController;
         this.foodController = foodController;
         setLayout(new BorderLayout());
-        textPanel1 = new TextPanel();
-        textPanel2 = new TextPanel();
+        tableProductsPanel = new TableProductsPanel(foodController);
+        tableDishesPanel = new TableDishesPanel(dishController);
         refresh();
 
 
 
-        add(textPanel1, BorderLayout.EAST);
-        add(textPanel2, BorderLayout.CENTER);
+        add(tableDishesPanel, BorderLayout.CENTER);
 
     }
     public void refresh(){
-        textPanel1.setText(foodController.getInfo());
-        textPanel2.setText(dishController.getReadableInfo());
+        tableProductsPanel.refresh();
+        tableDishesPanel.refresh();
+    }
+    public void setDishTableListener(DishTableListener listener){
+        tableDishesPanel.setDishTableListener(listener);
+    }
+    public void removeProducts(){
+        remove(tableProductsPanel);
+        revalidate();
+        repaint();
+    }
+    public void addProducts(){
+        if(isAncestorOf(tableProductsPanel))
+            return;
+        add(tableProductsPanel, BorderLayout.CENTER);
+        revalidate();
+        repaint();
+    }
+    public void removeDishes(){
+        remove(tableDishesPanel);
+        revalidate();
+        repaint();
+    }
+    public void addDishes(){
+        if(isAncestorOf(tableDishesPanel))
+            return;
+        add(tableDishesPanel, BorderLayout.CENTER);
+        revalidate();
+        repaint();
     }
 }

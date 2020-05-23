@@ -3,7 +3,7 @@ package gui;
 import new_model.controllers.DbController;
 import new_model.dbClasses.KeyVals;
 
-public class NewYear {
+public class DishesMenu {
     private static String dataBase = "jdbc:mysql://localhost:8889/restaurant?useSSL=false";
     private static String products = "Products";
     public static void main(String[] args) {
